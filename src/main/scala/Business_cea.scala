@@ -4,14 +4,16 @@ import org.apache.spark.sql.{functions => F};
 import org.apache.spark.sql.SaveMode;
 import java.util.Properties
 
-object Main extends App {
-  private val spark = SparkSession
+	
+object Business_cea {
+  def main(args: Array[String]) {
+  val spark = SparkSession
     .builder
     .appName("Business_CEA")
     .master("local")
     .getOrCreate();
 
-  val path = "/home/ravenclaw/Documents/datasets/yelp_ds_business.json";
+  val path = "/home1/em963948/Desktop/datasets/ds_business.json";
   val colsOk: List[String] = List("address",  "business_id",  "city",
     "is_open", "latitude", "longitude", "name", "postal_code", "review_count", "stars", "state");
   val colsNotOk: List[String] = List("attributes", "categories", "hours");
@@ -33,6 +35,7 @@ object Main extends App {
 
   // Enregistrement du DataFrame users dans la table "user"
   df.write.mode(SaveMode.Overwrite).jdbc(url, "business_cea", connectionProperties);
-
+  
   spark.stop();
+  }
 }
