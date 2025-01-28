@@ -26,15 +26,16 @@ object Business_cea {
   df.printSchema();
 
   // Paramètres de la connexion BD
+  val nom_base = "an450821"
   Class.forName("org.postgresql.Driver")
-  val url = "jdbc:postgresql://kafka:5432/em963948"
+  val url = "jdbc:postgresql://kafka:5432/"+nom_base
   val connectionProperties = new Properties();
   connectionProperties.setProperty("driver", "org.postgresql.Driver");
-  connectionProperties.setProperty("user", "em963948");
-  connectionProperties.setProperty("password","em963948");
+  connectionProperties.setProperty("user", nom_base);
+  connectionProperties.setProperty("password",nom_base);
 
   // Enregistrement du DataFrame users dans la table "user"
-  df.write.mode(SaveMode.Overwrite).jdbc(url, "business_cea", connectionProperties);
+  df.write.mode(SaveMode.Overwrite).jdbc(url, "business", connectionProperties);
   
   spark.stop();
   }
