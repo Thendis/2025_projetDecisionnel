@@ -1,0 +1,10 @@
+requête sans ssh (avec VPN. Tel quel) :
+	psql -h stendhal.iem -U tpid tpid2020
+	psql -h kafka.iem -U an450821 an450821
+
+Lancer script avec 16Go de ram
+    sbt -J-Xmx16g run
+
+export PATH=/usr/gide/sbt-1.3.13/bin:$PATH
+export PATH=/usr/gide/jdk-1.8/bin:$PATH
+

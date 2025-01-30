@@ -1,4 +1,13 @@
-[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_cea.scala:10:3: illegal start of statement (no modifiers allowed here)[0m
-[0m[[0m[31merror[0m] [0m[0m  private val spark = SparkSession[0m
-[0m[[0m[31merror[0m] [0m[0m  ^[0m
-[0m[[0m[31merror[0m] [0m[0mone error found[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_cea.scala:33:79: identifier expected but ':' found.[0m
+[0m[[0m[31merror[0m] [0m[0m  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String nom_base: String="an450821"){[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_cea.scala:46:1: ')' expected but '}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_dwh.scala:42:79: identifier expected but ':' found.[0m
+[0m[[0m[31merror[0m] [0m[0m  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String nom_base: String="an450821"){[0m
+[0m[[0m[31merror[0m] [0m[0m                                                                              ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_dwh.scala:55:1: ')' expected but '}' found.[0m
+[0m[[0m[31merror[0m] [0m[0m}[0m
+[0m[[0m[31merror[0m] [0m[0m^[0m
+[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
