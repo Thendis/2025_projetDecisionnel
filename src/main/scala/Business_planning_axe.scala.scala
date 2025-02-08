@@ -49,7 +49,7 @@ def main(args: Array[String]):Unit= {
     tools.sendToPsql(df, "business_planning_axe")
     spark.stop();
 
-    val path: os.Path = os.pwd / "update_scripts_sql" / "update_business_axe.sql";
+    val path: os.Path = os.pwd / "SQL" /"update_scripts_sql" / "update_business_axe.sql";
     val file = os.read(path);
     tools.execute(query=file);
 } 
