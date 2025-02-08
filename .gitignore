@@ -1,1 +1,7 @@
 .class
+target/*
+project/*
+lib/*
+.vscode/*
+.metals/*
+.bloop/*
