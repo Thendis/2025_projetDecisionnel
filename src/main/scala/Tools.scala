@@ -94,5 +94,11 @@ class Tools {
     // Enregistrement du DataFrame users dans la table "user"
     df.write.mode(SaveMode.Overwrite).jdbc(url, nom_table, connectionProperties);
     }
+  
+  def executeSqlFromFile(dir:String="update_scripts_sql", file:String){
+    val path: os.Path = os.pwd / "SQL" / dir / file;
+    val str_file = os.read(path);
+    execute(query=str_file)
+  } 
 
   }

@@ -1,12 +1,17 @@
 
-setup:
+setup_env:
 	export PATH=/usr/gide/sbt-1.3.13/bin:/usr/gide/jdk-1.8/bin:$PATH
 
 build :
 	sbt "runMain Business_cea"
 	sbt "runMain Business_dwh"
-	sbt "runMain Business_planning_axe"
 	echo "===> RUNNING OK"
+
+connect_source:
+	psql -h stendhal.iem -U tpid tpid2020
+
+connect_cible:
+	psql -h kafka.iem -U an450821 an450821
 
 git_add:
 	git add build.sbt
