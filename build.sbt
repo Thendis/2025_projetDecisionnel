@@ -5,6 +5,9 @@ ThisBuild / scalaVersion := "2.12.15" // "3.3.4"
 lazy val root = (project in file("."))
   .settings(
     name := "projetDecisionnel_2025",
+    resolvers ++= Seq(
+      "Maven Repository" at "https://mvnrepository.com/artifact/"
+    ),
     libraryDependencies ++= Seq(
       "org.apache.spark" %% "spark-core" % "3.3.1",
       "org.apache.spark" %% "spark-sql" % "3.3.1",

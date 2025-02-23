@@ -102,3 +102,8 @@ TODO : Faire le schéma business : JSON -> CEA -> DWH -> Axe. L'axe devrait puis
 TODO : Correction ecart entre business_dwh et usa_state_geometry_ref
 TODO : Lien entre address et usa_state_geometry_ref
 TODO : TAble PostGIS
+TODO : Changer les chamins d'accès pour makefile. TOut doit être de l'étagère
+
+TODO : Dans le makefile
+récupérer les données
+transformer le shape en csv
