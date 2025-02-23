@@ -1,13 +1,10 @@
-[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_cea.scala:33:79: identifier expected but ':' found.[0m
-[0m[[0m[31merror[0m] [0m[0m  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String nom_base: String="an450821"){[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                              ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_cea.scala:46:1: ')' expected but '}' found.[0m
-[0m[[0m[31merror[0m] [0m[0m}[0m
-[0m[[0m[31merror[0m] [0m[0m^[0m
-[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_dwh.scala:42:79: identifier expected but ':' found.[0m
-[0m[[0m[31merror[0m] [0m[0m  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String nom_base: String="an450821"){[0m
-[0m[[0m[31merror[0m] [0m[0m                                                                              ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/Business_dwh.scala:55:1: ')' expected but '}' found.[0m
-[0m[[0m[31merror[0m] [0m[0m}[0m
-[0m[[0m[31merror[0m] [0m[0m^[0m
-[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/LABO.scala:12:19: not found: value os[0m
+[0m[[0m[31merror[0m] [0m[0m        val path: os.Path = os.root / "update_scripts_sql" / "update_business_axe.sql";[0m
+[0m[[0m[31merror[0m] [0m[0m                  ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/LABO.scala:12:29: not found: value os[0m
+[0m[[0m[31merror[0m] [0m[0m        val path: os.Path = os.root / "update_scripts_sql" / "update_business_axe.sql";[0m
+[0m[[0m[31merror[0m] [0m[0m                            ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home7/em963948/Desktop/2025_projetDecisionnel/src/main/scala/LABO.scala:13:20: not found: value os[0m
+[0m[[0m[31merror[0m] [0m[0m        val file = os.read(path);[0m
+[0m[[0m[31merror[0m] [0m[0m                   ^[0m
+[0m[[0m[31merror[0m] [0m[0mthree errors found[0m
