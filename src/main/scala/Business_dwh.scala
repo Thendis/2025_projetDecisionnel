@@ -50,5 +50,6 @@ def main(args: Array[String]):Unit= {
     spark.stop();
 
     tools.executeSqlFromFile(file="update_business_dwh.sql");
+    tools.executeSqlFromFile(dir = "create_script_sql", file = "create_alcohol_vs_no_alcohol_fat.sql")
   } 
 }

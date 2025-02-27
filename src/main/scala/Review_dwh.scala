@@ -19,11 +19,19 @@ object Review_dwh{
     .master("local")
     .getOrCreate();
 
-    var df = tools.readFromQuery(spark = spark, query = "select review.*, coalesce(elite.year,9999) from yelp.review left join yelp.elite on review.user_id = elite.user_id", nom_base = "tpid2020", user = "tpid", password="tpid",  host="stendhal");
     
-    df.printSchema();
-    df.show(5);
-    tools.sendToPsql(df, "review")
+    var df = tools.readFromQuery(spark = spark, query = "select review.*, coalesce(elite.year,9999) from yelp.review left join yelp.elite on review.user_id = elite.user_id where spark_partition = 0", nom_base = "tpid2020", user = "tpid", password="tpid",  host="stendhal");
+    
+    df.printSchema()
+    tools.sendToPsql(df, "review_dwh")
+    val rg = new Range(1,100,1)
+    for (i <- rg){
+      var df = tools.readFromQuery(spark = spark, query = "select review.*, coalesce(elite.year,9999) from yelp.review left join yelp.elite on review.user_id = elite.user_id where spark_partition = "+i, nom_base = "tpid2020", user = "tpid", password="tpid",  host="stendhal");
+    
+      df.printSchema()
+      tools.sendToPsql(df, "review_dwh", rewrite = false)
+    }
+    
   
     spark.stop();
   }

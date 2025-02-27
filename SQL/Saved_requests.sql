@@ -107,3 +107,31 @@ TODO : Changer les chamins d'accès pour makefile. TOut doit être de l'étagèr
 TODO : Dans le makefile
 récupérer les données
 transformer le shape en csv
+
+/*GEO
+Référence retiré car non conforme
+313,313,Ketchikan Gateway,POINT (0 0)
+314,314,Bethel,POINT (0 0)
+821,821,Kodiak Island,POINT (0 0)
+851,851,Aleutians East,POINT (0 0)
+852, supprimé par erreur
+853,853,Sitka,POINT (0 0)
+1023,1023,Nome,POINT (0 0)
+1392,1392,Chugach,POINT (0 0)
+1433,1433,Prince of Wales-Hyder,POINT (0 0)
+1434,1434,Aleutians West,POINT (0 0)
+1575,1575,Kenai Peninsula,POINT (0 0)
+2313,2313,Lake and Peninsula,POINT (0 0)
+2606,2606,Hoonah-Angoon,POINT (0 0)
+2974,2974,North Slope,POINT (0 0)
+3077,3077,Wrangell,POINT (0 0)
+
+road a retirer ou corriger (speed > 104)
+
+id_	length_	jurisname
+863581	30.72	Tennessee
+929152	3.44	Georgia
+929060	10.68	Georgia
+937092	21.22	Tennessee
+
+*/

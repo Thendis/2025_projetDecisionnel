@@ -77,7 +77,7 @@ class Tools {
     * @param nom_table
     * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à an450821)
     */
-  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String, nom_base: String="an450821"): Unit={
+  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String, nom_base: String="an450821", rewrite: Boolean = true): Unit={
     // Paramètres de la connexion BD
     print("===> Sending Dataframe with sendToPsql. See next")
     df.printSchema();
@@ -89,16 +89,19 @@ class Tools {
     connectionProperties.setProperty("driver", "org.postgresql.Driver");
     connectionProperties.setProperty("user", nom_base);
     connectionProperties.setProperty("password",nom_base);
-
+  
 
     // Enregistrement du DataFrame users dans la table "user"
-    df.write.mode(SaveMode.Overwrite).jdbc(url, nom_table, connectionProperties);
-    }
+    if(rewrite){
+      df.write.mode(SaveMode.Overwrite).option("batchsize", 1000).jdbc(url, nom_table, connectionProperties);
+    } else{
+      df.write.mode(SaveMode.Append).option("batchsize", 1000).jdbc(url, nom_table, connectionProperties);
+    } 
+  } 
   
   def executeSqlFromFile(dir:String="update_scripts_sql", file:String){
     val path: os.Path = os.pwd / "SQL" / dir / file;
     val str_file = os.read(path);
     execute(query=str_file)
-  } 
-
   }
+}

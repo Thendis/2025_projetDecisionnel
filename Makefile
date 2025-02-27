@@ -5,6 +5,7 @@ setup_env:
 build :
 	sbt "runMain Business_cea"
 	sbt "runMain Business_dwh"
+	sbt -J-Xmx16g "runMain Review_dwh"
 	echo "===> RUNNING OK"
 
 connect_source:
