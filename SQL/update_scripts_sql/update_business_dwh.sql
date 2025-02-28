@@ -9,6 +9,3 @@ UPDATE business_dwh SET sunday_close = sunday_close||' +1 jour', sunday_close_mi
 
 --Add a geometry column for the point
 select addGeometryColumn('business_dwh', 'geom', 0, 'POINT', 2);
-
---latitude longitude to POINT(longitude, latitude)
-update test_geom set geom = st_geomfromtext('POINT('||longitude||' '||latitude||')');

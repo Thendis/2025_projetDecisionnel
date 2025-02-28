@@ -8,7 +8,7 @@ object SimpleApp {
 		// Initialisation de Spark
 		val spark = SparkSession.builder.appName("ETL").master("local[4]").getOrCreate()
 		
-		val usersFile = "/home1/em963948/Desktop/datasets/ds_busines.json"
+		val usersFile = "ds_busines.json"
 		
 		// Chargement du fichier JSON
 		var users = spark.read.json(usersFile).cache()

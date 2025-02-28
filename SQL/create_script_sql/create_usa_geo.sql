@@ -1,7 +1,7 @@
 --Init geometry table with postgis
-drop table if exists usa_geo_ref;
-drop table if exists usa_road_geo_ref;
-create table if not exists usa_geo_ref (
+drop table if exists usa_geo_axe;
+drop table if exists usa_road_geo_axe;
+create table if not exists usa_geo_axe (
     id_ int,
     statefp varchar(6),
     countyfp varchar(6),
@@ -17,10 +17,10 @@ create table if not exists usa_geo_ref (
     awater int
 );
 
-select addGeometryColumn('usa_geo_ref', 'geom', 0, 'MULTIPOLYGON', null);
+select addGeometryColumn('usa_geo_axe', 'geom', 0, 'MULTIPOLYGON', null);
 
 
-create table if not exists usa_road_geo_ref (
+create table if not exists usa_road_geo_axe (
     id_ int,
     dir int,
     length_ float,
@@ -39,4 +39,4 @@ create table if not exists usa_road_geo_ref (
     border float
 );
 
-select addGeometryColumn('usa_road_geo_ref', 'geom', 0, 'MULTILINESTRING', null);
+select addGeometryColumn('usa_road_geo_axe', 'geom', 0, 'MULTILINESTRING', null);

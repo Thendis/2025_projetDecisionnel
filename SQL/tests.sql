@@ -28,23 +28,15 @@ select * from (
 
 --Ne doit ressortir que full_bar, beer_and_wine et null
 select alcohol, count(*) from business_cea group by 1;
-/*
-Avant filtre sur alcohol :
-     alcohol      | count  
-------------------+--------
- 'beer_and_wine'  |   1867
- 'full_bar'       |   3628
- 'none'           |   5951
- None             |     90
- u'beer_and_wine' |   5117
- u'full_bar'      |  17462
- u'none'          |  16723
-                  | 158555
 
-Après filtre sur alcohol :
-    alcohol    | count  
----------------+--------
-               | 181319
- full_bar      |  21090
- beer_and_wine |   6984
-*/
+with al as(
+    select 'j' alj, 'alcohol' src,count(distinct business_id) c from business_alcohol_fat
+
+),noalas as(
+    select 'j' nalj, 'no_alcohol' src,count(distinct business_id) c from business_no_alcohol_fat
+
+), dwh as(
+    select 'j'dwhj, 'all' src,count(distinct business_id) c from business_dwh
+)select dwh.c dwh, al.c + noalas.c somme_alcohol_no_alcohol
+    from dwh inner join noalas on nalj = dwhj inner join al on dwhj = alj;
+

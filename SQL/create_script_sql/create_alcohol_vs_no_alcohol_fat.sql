@@ -1,12 +1,39 @@
 --Opose stats of business with and without alcool
-drop table if exists categorie_alcohol_fat;
-drop table if exists categorie_no_alcohol_fat;
-drop table if exists compare_categorie_fat;
-drop table if exists alcohol_vs_no_alcohol_fat;
+drop table if exists business_alcohol_fat;
+drop table if exists business_no_alcohol_fat;
+
+drop table if exists categorie_alcohol_dmt;
+drop table if exists categorie_no_alcohol_dmt;
+drop table if exists compare_categorie_dmt;
+drop table if exists alcohol_vs_no_alcohol_dmt;
 drop table if exists business_stars_dmt;
 drop table if exists business_evo_dmt;
---======FAT======--
+
+
+
 --business selling alcohol stats
+create table if not exists business_alcohol_fat as 
+select business_id , is_open , latitude , longitude, review_count , stars , address , state , city , name , postal_code , checkin_count , alcohol , categorie0 , categorie1 , categorie2 , categorie3 , categorie4 , categorie5  , 
+monday_close_minutes - monday_open_minutes  time_open_monday, 
+tuesday_close_minutes - tuesday_open_minutes time_open_tuesday, 
+wednesday_close_minutes - wednesday_open_minutes time_open_wednesday, 
+thursday_close_minutes - thursday_open_minutes time_open_thursday, 
+friday_close_minutes - friday_open_minutes time_open_friday, 
+saturday_close_minutes - saturday_open_minutes time_open_saturday, 
+sunday_close_minutes - sunday_open_minutes time_open_sunday
+from business_dwh where alcohol in ('beer_and_wine','full_bar');
+
+create table if not exists business_no_alcohol_fat as 
+select business_id , is_open , latitude , longitude, review_count , stars , address , state , city , name , postal_code , checkin_count , alcohol , categorie0 , categorie1 , categorie2 , categorie3 , categorie4 , categorie5  , 
+monday_close_minutes - monday_open_minutes  time_open_monday, 
+tuesday_close_minutes - tuesday_open_minutes time_open_tuesday, 
+wednesday_close_minutes - wednesday_open_minutes time_open_wednesday, 
+thursday_close_minutes - thursday_open_minutes time_open_thursday, 
+friday_close_minutes - friday_open_minutes time_open_friday, 
+saturday_close_minutes - saturday_open_minutes time_open_saturday, 
+sunday_close_minutes - sunday_open_minutes time_open_sunday
+from business_dwh where alcohol is null;
+
 create table if not exists categorie_alcohol_dmt as
 with categorie_alcohol as (
     select categorie0 categorie, count(*) categorie_count, min(stars) min_stars,
@@ -262,8 +289,8 @@ select
     nal.median_review_count no_alcohol_median_review_count,
     al.avg_review_count alcohol_avg_review_count,
     nal.avg_review_count no_alcohol_avg_review_count
-    from categorie_alcohol_fat al
-        left join categorie_no_alcohol_fat nal on al.categorie = nal.categorie;
+    from categorie_alcohol_dmt al
+        left join categorie_no_alcohol_dmt nal on al.categorie = nal.categorie;
 
 -- Alcohol vs no acohol main stats
 create table if not exists alcohol_vs_no_alcohol_dmt as 

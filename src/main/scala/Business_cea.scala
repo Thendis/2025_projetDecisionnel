@@ -18,7 +18,7 @@ object Business_cea {
     .getOrCreate();
     val tools = new Tools()
 
-  val path = "/home1/em963948/Desktop/datasets/ds_business.json";
+  val path = "dataset/ds_business.json";
   val colsOk: List[String] = List("address",  "business_id",  "city",
     "is_open", "latitude", "longitude", "name", "postal_code", "review_count", "stars", "state", "hours", "categories", "attributes");
 

@@ -29,8 +29,16 @@ def main(args: Array[String]):Unit= {
     .getOrCreate();
     val tools = new Tools()
 
+  //Charge chekin en amont
+  var df = spark.read.json("dataset/ds_checkin.json").cache();
+  df = df
+  .select("business_id", "date")
+  .withColumn("date", F.explode(F.split(F.col("date"), ",")));
 
-  var df = tools.readFromQuery(spark,"SELECT business_cea.business_id, is_open, latitude, longitude, review_count, stars, address, state, city, name, postal_code, coalesce(count(date),  0) checkin_count, alcohol, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, sunday_open, sunday_close, categorie0, categorie1, categorie2, categorie3, categorie4, categorie5 FROM business_cea LEFT JOIN checkin ON checkin.business_id = business_cea.business_id GROUP BY business_cea.business_id, is_open, latitude, longitude, review_count, stars, address, state, city, name, postal_code, alcohol, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, sunday_open, sunday_close, categorie0, categorie1, categorie2, categorie3, categorie4, categorie5");
+  tools.sendToPsql(df, "checkin");
+
+
+  df = tools.readFromQuery(spark,"SELECT business_cea.business_id, is_open, latitude, longitude, review_count, stars, address, state, city, name, postal_code, coalesce(count(date),  0) checkin_count, alcohol, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, sunday_open, sunday_close, categorie0, categorie1, categorie2, categorie3, categorie4, categorie5 FROM business_cea LEFT JOIN checkin ON checkin.business_id = business_cea.business_id GROUP BY business_cea.business_id, is_open, latitude, longitude, review_count, stars, address, state, city, name, postal_code, alcohol, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close, thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, sunday_open, sunday_close, categorie0, categorie1, categorie2, categorie3, categorie4, categorie5");
 
     //Passe du format heure:minute à un nombre de minutes jusqu'à l'évènnement
     // Liste des colonnes à convertir
@@ -50,6 +58,6 @@ def main(args: Array[String]):Unit= {
     spark.stop();
 
     tools.executeSqlFromFile(file="update_business_dwh.sql");
-    tools.executeSqlFromFile(dir = "create_script_sql", file = "create_alcohol_vs_no_alcohol_fat.sql")
+    
   } 
 }

@@ -11,14 +11,14 @@ class Tools {
     * Retourne un dataframe a partir d'une requête SQL
     * @param spark SparkSession initialisé
     * @param query Le string de la query demandé. Doit contenir un SELECT
-    * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à an450821)
+    * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à em963948)
     * @param user
     * @param password
     * @param host
     * @param port
     * @return DataFrame avec le résultat de la requête
     */
-  def readFromQuery(spark:SparkSession, query:String, nom_base:String = "an450821", user:String = "an450821", password:String = "an450821", host:String = "kafka", port:Integer=5432 ): org.apache.spark.sql.DataFrame =
+  def readFromQuery(spark:SparkSession, query:String, nom_base:String = "em963948", user:String = "em963948", password:String = "em963948", host:String = "kafka", port:Integer=5432 ): org.apache.spark.sql.DataFrame =
     return spark.read.format("jdbc")
     .option("url", "jdbc:postgresql://"+host+":"+port+"/"+nom_base)
     .option("driver", "org.postgresql.Driver")
@@ -36,7 +36,7 @@ class Tools {
       * @param host
       * @param port
       */
-  def execute(query:String, nom_base:String = "an450821", user:String = "an450821", password:String = "an450821", host:String = "kafka", port:Integer=5432 ): Unit={
+  def execute(query:String, nom_base:String = "em963948", user:String = "em963948", password:String = "em963948", host:String = "kafka", port:Integer=5432 ): Unit={
     val con_str = "jdbc:postgresql://"+host+":"+port+"/"+nom_base+"?user="+user+"&password="+password
     val conn = DriverManager.getConnection(con_str)
     try {
@@ -53,14 +53,14 @@ class Tools {
     * Retourne un dataframe a partir du nom d'une table
     * @param spark SparkSession initialisé
     * @param query Le string de la query demandé. Doit contenir un SELECT
-    * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à an450821)
+    * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à em963948)
     * @param user
     * @param password
     * @param host
     * @param port
     * @return DataFrame avec le résultat de la requête
     */
-  def readFromTable(spark:SparkSession, nom_table:String, nom_base:String = "an450821", user:String = "an450821", password:String = "an450821", host:String = "kafka", port:Integer=5432 ): org.apache.spark.sql.DataFrame =
+  def readFromTable(spark:SparkSession, nom_table:String, nom_base:String = "em963948", user:String = "em963948", password:String = "em963948", host:String = "kafka", port:Integer=5432 ): org.apache.spark.sql.DataFrame =
     return spark.read.format("jdbc")
     .option("url", "jdbc:postgresql://"+host+":"+port+"/"+nom_base)
     .option("driver", "org.postgresql.Driver")
@@ -75,9 +75,9 @@ class Tools {
     *
     * @param df Le dataframe a envoyer en base
     * @param nom_table
-    * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à an450821)
+    * @param nom_base l'identifiant de l'étudiant ou récupéer la base (Initialisé à em963948)
     */
-  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String, nom_base: String="an450821", rewrite: Boolean = true): Unit={
+  def sendToPsql(df: org.apache.spark.sql.DataFrame, nom_table:String, nom_base: String="em963948", rewrite: Boolean = true): Unit={
     // Paramètres de la connexion BD
     print("===> Sending Dataframe with sendToPsql. See next")
     df.printSchema();
