@@ -14,4 +14,6 @@ export PATH=/usr/gide/jdk-1.8/bin:$PATH
 
 ## Lancer la construction de la base (par defaut sur la base em963948)
 ### POur changer la source, modifier toutes les references à em963948 dans tools.scala
+```bash
 make build
+```
